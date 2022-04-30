@@ -1,4 +1,4 @@
-# LRP based Structured Pruning
+# ProtoPNet Implementation and Pruning
 
 ## Requirements
 > Pytorch 1.6.0+ \
