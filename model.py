@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 import torch.nn.functional as F
+from torchinfo import summary
 
 from resnet_features import resnet18_features, resnet34_features, resnet50_features, resnet101_features, resnet152_features
 from densenet_features import densenet121_features, densenet161_features, densenet169_features, densenet201_features
@@ -296,6 +297,15 @@ def construct_PPNet(base_architecture, pretrained=True, img_size=224,
                                                          layer_strides=layer_strides,
                                                          layer_paddings=layer_paddings,
                                                          prototype_kernel_size=prototype_shape[2])
+    pnet = PPNet(features=features,
+                 img_size=img_size,
+                 prototype_shape=prototype_shape,
+                 proto_layer_rf_info=proto_layer_rf_info,
+                 num_classes=num_classes,
+                 init_weights=True,
+                 prototype_activation_function=prototype_activation_function,
+                 add_on_layers_type=add_on_layers_type)
+
     return PPNet(features=features,
                  img_size=img_size,
                  prototype_shape=prototype_shape,

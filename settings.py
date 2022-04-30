@@ -1,19 +1,21 @@
-base_architecture = 'vgg19'
+base_architecture = 'resnet18'
 img_size = 224
-prototype_shape = (2000, 128, 1, 1)
-num_classes = 200
+prototype_shape = (70, 512, 1, 1)
+num_classes = 7
+train_batch_size = 32
+test_batch_size = 30
+train_push_batch_size = 32
+
 prototype_activation_function = 'log'
 add_on_layers_type = 'regular'
 
 experiment_run = '003'
 
-data_path = './datasets/cub200_cropped/'
+data_path = './datasets/cq500/'
 train_dir = data_path + 'train_cropped_augmented/'
 test_dir = data_path + 'test_cropped/'
 train_push_dir = data_path + 'train_cropped/'
-train_batch_size = 80
-test_batch_size = 100
-train_push_batch_size = 75
+
 
 joint_optimizer_lrs = {'features': 1e-4,
                        'add_on_layers': 3e-3,
@@ -32,8 +34,8 @@ coefs = {
     'l1': 1e-4,
 }
 
-num_train_epochs = 1000
-num_warm_epochs = 5
+num_train_epochs = 10
+num_warm_epochs = 1
 
-push_start = 10
-push_epochs = [i for i in range(num_train_epochs) if i % 10 == 0]
+push_start = 2
+push_epochs = [i for i in range(num_train_epochs) if i % 2 == 0]

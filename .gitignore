@@ -1,0 +1,6 @@
+datasets/**
+checkpoint/**
+**/*.pth
+__pycache__/**
+saved_models/**
+
